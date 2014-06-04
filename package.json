@@ -1,0 +1,32 @@
+{
+  "name": "webdriverjs-selenium-bundle",
+  "version": "0.0.2",
+  "description": "Want to use webdriverjs without needing to start the selenium-server separately? In that case, this is a bundle for you!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webdriverjs",
+    "selenium",
+    "webdriver",
+    "testing"
+  ],
+  "author": {
+    "name": "Camilo Tapia",
+    "email": "camilo.tapia@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "webdriverjs": ">1.7.0",
+    "selenium-standalone": "git+https://github.com/endor/selenium-standalone#master",
+    "phantomjs": "~1.9.7-1"
+  },
+  "devDependencies": {
+    "webdriverjs": ">1.7.0"
+  },
+  "readme": "webdriverjs-selenium-bundle\n===========================\n\nWant to use webdriverjs without needing to start the selenium-server separately? In that case, this is a bundle for you!\n\nIt includes the latest selenium standalone server, chromedriver and\nphantomjs.\n\n## How to use\n\nFirst install webdriverjs and this bindle with npm:\n\n    npm install webdriverjs\n    npm install webdriverjs-selenium-bundle\n\nThen just use it like this:\n\n    var webdriverjs = require(\"webdriverjs\");\n    var wdjsSeleniumBundle = require(\"webdriverjs-selenium-bundle\");\n\n    var client = webdriverjs.remote({ desiredCapabilities: { browserName: 'phantomjs' } });\n\n    // autostop makes sure that the selenium server is stopped after\n    // calling end().\n    client.use(wdjsSeleniumBundle({autostop: true}));\n\n    client\n        .init()\n        .url(\"https://github.com/\")\n        .getTitle(function(err, title) {\n            console.log();\n            console.log(\"GITHUB TITLE: %s\", title);\n            console.log();\n        })\n        .end();\n\nThis will run webdriverjs as usual, but will start the selenium server\nwhen init() is called. \n\n",
+  "readmeFilename": "README.md",
+  "_id": "webdriverjs-selenium-bundle@0.0.2",
+  "_from": "webdriverjs-selenium-bundle@0.0.2"
+}
